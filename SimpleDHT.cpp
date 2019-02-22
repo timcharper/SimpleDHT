@@ -217,7 +217,7 @@ int SimpleDHT11::sample(byte data[40]) {
     //    1. PULL LOW 80us
     //    2. PULL HIGH 80us
     long t = levelTime(LOW);          // 1.
-    if (t < 30) {                    // specs [2]: 80us
+    if (t < 20) {                    // specs [2]: 80us
         return simpleDHTCombileError(t, SimpleDHTErrStartLow);
     }
 
@@ -320,7 +320,7 @@ int SimpleDHT22::sample(byte data[40]) {
     //    1. T(rel), PULL LOW 80us(75-85us).
     //    2. T(reh), PULL HIGH 80us(75-85us).
     long t = 0;
-    if ((t = levelTime(LOW)) < 30) {
+    if ((t = levelTime(LOW)) < 20) {
         return simpleDHTCombileError(t, SimpleDHTErrStartLow);
     }
     if ((t = levelTime(HIGH)) < 50) {
